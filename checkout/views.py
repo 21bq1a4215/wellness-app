@@ -3,8 +3,8 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import OrderForm
-from .models import Order, OrderLineItem
+from .forms import OrderForm, CouponForm
+from .models import Order, OrderLineItem, Coupon
 
 from products.models import Product
 from profiles.models import UserProfile
@@ -133,6 +133,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
+        'couponform': CouponForm(),
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -181,3 +182,30 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def get_coupon(request, code):
+    try:
+        coupon = Coupon.objects.get(code=code)
+        return coupon
+    except Exception as e:
+        messages.info(request, "This coupon does not exist")
+        return redirect("checkout/checkout.html")
+
+
+def add_coupon(request):
+    if request.method == "POST":
+        form = CouponForm(request.POST or None)
+        if form.is_valid():
+            try:
+                code = form.cleaned_data.get('code')
+                order = Order.objects.get(
+                    user=self.request.user, ordered=False)
+                order.coupon = get_coupon(self.request, code)
+                order.save()
+                messages.success(self.request, "Successfully added coupon")
+                return redirect("checkout/checkout.html")
+            except Exception as e:
+                messages.info(self.request, "You do not have an active order")
+                return redirect("checkout/checkout.hmlt")
+    return None

@@ -24,6 +24,8 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
     county = models.CharField(max_length=80, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
+    coupon = models.ForeignKey(
+        'Coupon', on_delete=models.SET_NULL, blank=True, null=True)
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
@@ -79,3 +81,10 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.code
