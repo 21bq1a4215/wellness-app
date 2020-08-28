@@ -66,13 +66,13 @@
                         <span class="text-success">-$5</span>
                  </li>
 
-                 <form class="card p-2" action="{% url 'add-coupon' %" method="POST">
+                 <form class="card p-2" action="{% url 'checkout:add-coupon' %" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
                      <!-- <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
                         <div class="input-group-append">
                         {{ couponform.code }}
-                        <button class="btn btn-secondary btn-md waves-effect m-0"type="submit">Redeem</button>
+                        <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
                         </div>
                     </div>
                 </form>

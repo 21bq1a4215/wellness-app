@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 
 from .forms import OrderForm, CouponForm
 from .models import Order, OrderLineItem, Coupon
@@ -33,6 +34,7 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -133,7 +135,6 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'couponform': CouponForm(),
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
@@ -188,7 +189,7 @@ def get_coupon(request, code):
     try:
         coupon = Coupon.objects.get(code=code)
         return coupon
-    except Exception as e:
+    except ObjectDoesNotExist:
         messages.info(request, "This coupon does not exist")
         return redirect("checkout/checkout.html")
 
@@ -199,13 +200,12 @@ def add_coupon(request):
         if form.is_valid():
             try:
                 code = form.cleaned_data.get('code')
-                order = Order.objects.get(
-                    user=self.request.user, ordered=False)
-                order.coupon = get_coupon(self.request, code)
+                order = Order.objects.get(user=request.user, ordered=False)
+                order.coupon = get_coupon(request, code)
                 order.save()
-                messages.success(self.request, "Successfully added coupon")
+                messages.success(request, "Successfully added coupon")
                 return redirect("checkout/checkout.html")
-            except Exception as e:
-                messages.info(self.request, "You do not have an active order")
-                return redirect("checkout/checkout.hmlt")
-    return None
+            except ObjectDoesNotExist:
+                messages.info(request, "You do not have an active order")
+                return redirect("checkout/checkout.html")
+    return None 
