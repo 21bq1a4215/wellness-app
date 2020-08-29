@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.conf import settings
 
 import stripe
 import json
@@ -18,8 +18,8 @@ def pro(request):
             'quantity': 1,
         }],
         mode='payment',
-        success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=request.build_absolute_uri(reverse('pro')),
+        success_url='https://8000-cc83ffdc-8eed-493d-a6f1-9ec57a9ec108.ws-eu01.gitpod.io/thanks' + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url='https://8000-cc83ffdc-8eed-493d-a6f1-9ec57a9ec108.ws-eu01.gitpod.io/pro',
     )
 
     context = {
