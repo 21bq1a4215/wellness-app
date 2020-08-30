@@ -26,25 +26,25 @@
 
 
     <div class="container marketing">
-
          <!-- Three columns of text below the carousel -->
+         <h2 class="text-center"><strong>What can I do with my Wellness membership?</strong></h2>
         <div class="row">
             <div class="col-lg-4">
                 <i class="fas fa-shopping-bag fa-3x"></i>
                 <h2>Shop</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                <p>Get everything you need to maximise your training sessions. Special discounts for pro members.</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <i class="fas fa-comments fa-3x"></i>
-                <h2>Blog</h2>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                <i class="fas fa-heartbeat fa-3x"></i>
+                <h2>Workouts</h2>
+                <p>Discover new workouts, get nutrition information and healthy lifestyle tips from our experts!</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <i class="fas fa-home fa-3x"></i>
-                <h2>Workouts at home</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <i class="fas fa-spa fa-3x"></i>
+                <h2>Relax and recover</h2>
+                <p>Join our yoga classes, relax and strech your body. Do some meditation and learn about mindfulness.</p>
                 <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
@@ -56,7 +56,7 @@
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">About <span class="text-muted">Wellness App Community</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <p class="lead">The best of fitness and wellness. Whether you are a beginner or are ready for a new challenge. Become fitter, stronger and more confident with us. Join our community today!</p>
       </div>
       <div class="col-md-5">
               <img src="../media/getstrong.jpg" width="500" height="500" background="#eee" color="#aaa" class="bd-placeholder-img-lg featurette-image img-fluid mx-auto" >
@@ -69,7 +69,7 @@
     <div class="container">
     
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4">Pricing</h1>
+            <h1 class="display-4">Available plans on Wellness</h1>
                 <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
         </div>
 
@@ -79,14 +79,14 @@
             <h4 class="my-0 font-weight-normal">Free</h4>
         </div>
         <div class="card-body">
-            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+            <h1 class="card-title pricing-card-title">$0</h1>
             <ul class="list-unstyled mt-3 mb-4">
-            <li>10 users included</li>
-            <li>2 GB of storage</li>
+            <li>2 workout videos</li>
+            <li>1 nutritionplan</li>
             <li>Email support</li>
-            <li>Help center access</li>
+            <li>Community</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+            <button type="button" id="buy_now_btn" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
         </div>
         </div>
         <div class="card mb-4 shadow-sm">
@@ -94,29 +94,14 @@
             <h4 class="my-0 font-weight-normal">Pro</h4>
         </div>
         <div class="card-body">
-            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+            <h1 class="card-title pricing-card-title">$99.00</h1>
             <ul class="list-unstyled mt-3 mb-4">
-            <li>20 users included</li>
-            <li>10 GB of storage</li>
+            <li>Unlimited workout videos</li>
+            <li>Custom nutrition plan</li>
             <li>Priority email support</li>
-            <li>Help center access</li>
+            <li>Coupon discount in shop</li>
             </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-        </div>
-        </div>
-        <div class="card mb-4 shadow-sm">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Enterprise</h4>
-        </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-            <ul class="list-unstyled mt-3 mb-4">
-            <li>30 users included</li>
-            <li>15 GB of storage</li>
-            <li>Phone and email support</li>
-            <li>Help center access</li>
-            </ul>
-            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+            <a href="{% url 'pro' %}" class="btn btn-lg btn-block btn-primary">Get started</a>
         </div>
         </div>
     </div>

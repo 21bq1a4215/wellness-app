@@ -4,19 +4,20 @@ html {
 }
 
 body {
-    height: calc(100vh - 164px);
+    height: 100%;
     font-family: 'Lato';
 }
 
 
 /* The hero image */
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/photo-1565106305526-02f1f6e0e74b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mathieu-chassara-73uiBbPXwR8-unsplash.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/flagged/photo-1565106305412-e8cab493e15e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mathieu-chassara-47KbIvcklh8-unsplash.jpg");
   height: 70%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  height: calc(100vh - 164px);
 }
 
 .hero-text {
@@ -33,6 +34,10 @@ body {
 
 
 /* Center align the text within the three columns below the carousel */
+.marketing {
+    margin-top: 2.5rem;
+}
+
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   margin-top: 3.5rem;
@@ -44,6 +49,12 @@ body {
 .marketing .col-lg-4 p {
   margin-right: .75rem;
   margin-left: .75rem;
+}
+
+/* VIDEO PRO-MEMBERS PAGE
+-------------------------------------------------- */
+.album {
+    margin-top: 4.5rem;
 }
 
 /* Featurettes
@@ -342,7 +353,7 @@ input[name='q']::placeholder {
     }
 
     .header-container {
-        padding-top: 116px;
+        padding-top: 0px;
     }
 }
 

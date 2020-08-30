@@ -3,6 +3,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 import stripe
 import json
@@ -30,3 +31,7 @@ def pro(request):
 
 def thanks(request):
     return render(request, 'pro/thanks.html')
+
+@login_required(login_url='/accounts/login/')
+def pro_members(request):
+    return render(request, 'pro/pro-members.html')
