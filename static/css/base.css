@@ -9,6 +9,8 @@ body {
 }
 
 
+
+
 /* The hero image */
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/flagged/photo-1565106305412-e8cab493e15e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mathieu-chassara-47KbIvcklh8-unsplash.jpg");
@@ -340,6 +342,7 @@ input[name='q']::placeholder {
     background-color: #dc3545;
     border-color: #dc3545;
 }
+
 
 
 /* fixed top navbar only on medium and up */
