@@ -1,25 +1,27 @@
-html {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body, html {
     height: 100%;
     scroll-behavior: smooth;
+    font-size: 1em;
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
-body {
-    height: 100%;
-    font-family: 'Lato';
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
 }
-
-
 
 
 /* The hero image */
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/flagged/photo-1565106305412-e8cab493e15e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=mathieu-chassara-47KbIvcklh8-unsplash.jpg");
-  height: 70%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/flagged/photo-1573556278922-ad9a1914c801?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=rawan-yasser-E0Sbr9d1IV0-unsplash.jpg");
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  height: calc(100vh - 164px);
 }
 
 .hero-text {
@@ -29,6 +31,13 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+p .hero-text {
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* MARKETING CONTENT
@@ -363,12 +372,10 @@ input[name='q']::placeholder {
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 50pxpx;
     }
 
-    body {
-        height: calc(100vh - 116px);
-    }
+    
 }
 
 /* RESPONSIVE CSS

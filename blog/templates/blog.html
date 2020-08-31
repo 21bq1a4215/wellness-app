@@ -1,40 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container-fluid"  style="margin-top: 6rem;">
 
-<div class="row">
-  <div class="col-sm-2">
-  {% block sidebar %}
-  <ul class="sidebar-nav">
-    <li><a href="{% url 'blog' %}">Home</a></li>
-    <li><a href="{% url 'blogs' %}">All blogs</a></li>
-    <li><a href="{% url 'bloggers' %}">All bloggers</a></li>
+<div class="container-fluid"  style="margin-top: 6rem;">
+        <div class="container blog text-center">
+        <h1>Wellness Blog/Forum</h1>
+        <p>Welcome to Wellness Blog/Forum the most popular wellness support forum worldwide.</p>
+        </div>
+
+{% block sidebar %}
+  <ul class="nav justify-content-center">
+
+    <li class="nav-item">
+    <a class="nav-link active" href="{% url 'blog' %}">Blog</a>
+   </li>
+
+   <li class="nav-item">
+    <a class="nav-link active" href="{% url 'blogs' %}">All blogs</a>
+   </li>
+
+   <li class="nav-item">
+    <a class="nav-link active" href="{% url 'bloggers' %}">All bloggers</a>
+   </li>
   </ul>
-  
-  <ul class="sidebar-nav">
+
+   <ul class="nav justify-content-center">
    {% if user.is_authenticated %}
      <li>User: {{ user.get_username }}</li>
-     <li><a href="">Logout</a></li>   
+     <li><a href="{% url 'account_logout' %}">Logout</a></li>   
    {% else %}
-     <li><a href="">Login</a></li>   
+     <li><a href="{% url 'account_login' %}">Login</a></li>   
    {% endif %} 
   </ul>
- 
- 
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+    <div class="media text-muted pt-3">
+      
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@username</strong>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+     
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@username</strong>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      </p>
+    </div>
+    <div class="media text-muted pt-3">
+      
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@username</strong>
+        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+      </p>
+    </div>
+    <small class="d-block text-right mt-3">
+      <a href="#">All updates</a>
+    </small>
   </div>
+  
+ 
+
+<div class="row">
+
   <div class="col-sm-10 ">
  
-  <div class="container blog">
-<h1>DIY Blog Home</h1>
 
-<p>Welcome to <em>DIY Blog</em>, a very basic Django blogging website developed as an <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/django_assessment_blog">assessment task</a> for the Django learning module on the Mozilla Developer Network.</p>
-
-
-
-<h2>UML Models</h2>
-<p>An UML diagram of the site's Django model structure is shown below. </p>
-</div>
   {% endblock %}
   
   {% block pagination %}

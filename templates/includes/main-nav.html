@@ -1,7 +1,7 @@
 <div class="collapse navbar-collapse justify-content-end" id="main-nav">
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link text-white" href="{% url 'products' %}" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="all-products-link" aria-labelledby="all-products-link">
                 Shop
             </a>
             <div class="dropdown-menu" aria-labelledby="all-products-link">
@@ -12,7 +12,12 @@
                 <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
             </div>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'blog' %}">Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'pro' %}">Pro Members</a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link text-white" href="{% url 'products' %}?category=deals" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Special Offers
