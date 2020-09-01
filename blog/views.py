@@ -24,7 +24,6 @@ def blog(request):
     )
     
 
-
 class BlogListView(generic.ListView):
     """
     Generic class-based view for a list of all blogs.
@@ -34,6 +33,7 @@ class BlogListView(generic.ListView):
 
     
 from django.shortcuts import get_object_or_404
+
 
 class BlogListbyAuthorView(generic.ListView):
     """
@@ -69,7 +69,7 @@ class BlogDetailView(generic.DetailView):
     """
     model = Blog
 
-    
+
 class BloggerListView(generic.ListView):
     """
     Generic class-based view for a list of bloggers.

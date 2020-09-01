@@ -37,3 +37,6 @@ def thanks(request):
 @login_required(login_url='/accounts/login/')
 def pro_members(request):
     return render(request, 'pro/pro-members.html')
+
+
+

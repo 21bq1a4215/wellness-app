@@ -11,10 +11,6 @@
 {% block sidebar %}
   <ul class="nav justify-content-center">
 
-    <li class="nav-item">
-    <a class="nav-link active" href="{% url 'blog' %}">Blog</a>
-   </li>
-
    <li class="nav-item">
     <a class="nav-link active" href="{% url 'blogs' %}">All blogs</a>
    </li>
@@ -22,15 +18,22 @@
    <li class="nav-item">
     <a class="nav-link active" href="{% url 'bloggers' %}">All bloggers</a>
    </li>
-  </ul>
 
-   <ul class="nav justify-content-center">
-   {% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'account_logout' %}">Logout</a></li>   
-   {% else %}
-     <li><a href="{% url 'account_login' %}">Login</a></li>   
-   {% endif %} 
+    <li class="nav-item">
+    <a class="nav-link active">
+    {% if user.is_authenticated %}
+    User: {{ user.get_username }}
+    </a>
+    </li>
+
+    <li class="nav-item">
+     <a class="nav-link active" href="{% url 'account_logout' %}">Logout</a>   
+     </li>
+        {% else %}
+    <li class="nav-item">
+     <a class="nav-link active" href="{% url 'account_login' %}">Login</a>   
+     </li>
+    {% endif %} 
   </ul>
 
   <div class="my-3 p-3 bg-white rounded shadow-sm">

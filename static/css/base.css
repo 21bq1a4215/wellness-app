@@ -283,7 +283,7 @@ input[name='q']::placeholder {
 }
 
 .allauth-form-inner-content input {
-    border-color: #000;
+    border-color:;
 }
 
 .allauth-form-inner-content label:not([for='id_remember']) {
@@ -318,8 +318,8 @@ input[name='q']::placeholder {
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
 	color: #fff;
-    background-color: #222;
-    border-color: #222;
+    background-color: #007bff;
+    
 }
 
 .allauth-form-inner-content a {

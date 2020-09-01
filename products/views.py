@@ -1,11 +1,14 @@
+import math
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.db.models.functions import Lower
-
-from .models import Product, Category
+from .models import Product, Category, Review
 from .forms import ProductForm
+from .forms import ReviewForm
+
 
 # Create your views here.
 
@@ -63,9 +66,13 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    review_form = ReviewForm()
+    reviews = Review.objects.filter(product_id=product_id).order_by('-created_at')
 
     context = {
         'product': product,
+        'review_form': review_form,
+        'reviews': reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -137,3 +144,25 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def add_review(request, product_id):
+    """
+    Handles the POST request for review form. Saves the form and redirects
+    to the product selected page
+    """
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST': 
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            review = review_form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            messages.info(request, "Your review has been received! Thank you for your interest.")
+            return redirect(reverse('product_detail', args=[product_id]))
+        else:
+            print(review_form.errors)
+            
+    return redirect(reverse('product_detail', args=[product_id]))

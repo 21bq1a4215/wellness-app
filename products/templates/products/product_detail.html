@@ -11,7 +11,7 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:6rem;">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5">
@@ -29,6 +29,24 @@
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.name }}</p>
+
+                       {% if product.averagereview %}
+                        <small class="text-muted">
+                            <i class="fas fa-star{% if product.averagereview < 1 %}-o empty{% endif %}"></i>
+                            {% if product.averagereview > 1 and product.averagereview < 2 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                            <i class="fas fa-star{% if product.averagereview < 2 %}-o empty{% endif %}"></i>
+                            {% if product.averagereview > 2 and product.averagereview < 3 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                            <i class="fas fa-star{% if product.averagereview < 3 %}-o empty{% endif %}"></i>
+                            {% if product.averagereview > 3 and product.averagereview < 4 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                            <i class="fas fa-star{% if product.averagereview < 4 %}-o empty{% endif %}"></i>
+                            {% if product.averagereview > 4 and product.averagereview < 5 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                            <i class="fas fa-star{% if product.averagereview < 5 %}-o empty{% endif %}"></i>
+                            {{ product.averagereview|floatformat:1 }} / 5
+                        </small>
+                    {% else %}
+                        <small class="text-muted"><i class="far fa-star"></i> No ratings</small>
+                    {% endif %}
+
                     <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                     {% if product.category %}
                     <p class="small mt-1 mb-0">
@@ -49,6 +67,7 @@
                         </small>
                     {% endif %}
                     <p class="mt-3">{{ product.description }}</p>
+                    <!--Add to bag form with selecting quantity options and add to bag button-->
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
@@ -70,7 +89,7 @@
                                 <div class="form-group w-50">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <button class="decrement-qty btn btn-black" 
+                                            <button class="decrement-qty btn btn-primary" 
                                                 data-item_id="{{ product.id }}" id="decrement-qty_{{ product.id }}">
                                                 <span class="icon">
                                                     <i class="fas fa-minus"></i>
@@ -82,7 +101,7 @@
                                             data-item_id="{{ product.id }}"
                                             id="id_qty_{{ product.id }}">
                                         <div class="input-group-append">
-                                            <button class="increment-qty btn btn-black rounded-0"
+                                            <button class="increment-qty btn btn-primary"
                                                 data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
                                                 <span class="icon">
                                                     <i class="fas fa-plus"></i>
@@ -110,6 +129,59 @@
             </div>
         </div>
     </div>
+
+    <!--Reviews and form review-->
+    <section class="container-fluid">
+        <div class="row mt-5">
+            <div class="col col-lg-8 offset-lg-2">
+                <h4 class="text-uppercase">Reviews</h4>
+                <hr class="hr-bag">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 offset-lg-2 all-reviews mb-4">
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="single-review mb-3">
+                            <div class="review-heading">
+                                <span class="mr-3 text-muted"><i class="fas fa-user"></i> {{ review.user.username }}</span>
+                                <span class="text-muted"><i class="fas fa-clock"></i> {{ review.created_at }}</span>
+                                <div class="review-rating float-right">
+                                    <i class="fas fa-star{% if review.rate < 1 %}-o empty{% endif %}"></i>
+                                    <i class="fas fa-star{% if review.rate < 2 %}-o empty{% endif %}"></i>
+                                    <i class="fas fa-star{% if review.rate < 3 %}-o empty{% endif %}"></i>
+                                    <i class="fas fa-star{% if review.rate < 4 %}-o empty{% endif %}"></i>
+                                    <i class="fas fa-star{% if review.rate < 5 %}-o empty{% endif %}"></i>
+                                </div>
+                                <div class="mt-2"><p><strong>{{ review.subject }}</strong></p></div>
+                            </div>
+                            <div class="review-body">
+                                {{ review.review }}
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <p>Be the first one to leave a review!</p>
+                {% endif %}
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 form-bg p-3">
+                <h5 class="text-uppercase">Write a review</h5>
+                <form action="{% url 'add_review' product.id %}" method="POST" class="form-group review-form">
+                    {% csrf_token %}
+                    {{ review_form|crispy }}
+                    {% if user.is_authenticated %}
+                        <button id="submit-button" class="btn btn-purple">
+                            <span class="text-uppercase">Add review</span>
+                        </button>
+                    {% else %}
+                        <p>You must be logged in to add reviews! <a href="{% url 'account_login' %}">Login</a>
+                         or <a href="{% url 'account_signup' %}">Register</a></p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block postloadjs %}

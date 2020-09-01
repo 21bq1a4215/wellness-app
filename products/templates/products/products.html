@@ -62,6 +62,7 @@
                     </div>
                 </div>
                 <div class="row">
+                 <!--Products display-->
                     {% for product in products %}
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                             <div class="card h-100 border-0">
@@ -76,6 +77,23 @@
                                 {% endif %}
                                 <div class="card-body pb-0">
                                     <p class="mb-0">{{ product.name }}</p>
+                                    <!--Rating stars with if condition to corelate stars with the average rating-->
+                                        {% if product.averagereview %}
+                                        <small class="text-muted">
+                                            <i class="fas fa-star{% if product.averagereview < 1 %}-o empty{% endif %}"></i>
+                                            {% if product.averagereview > 1 and product.averagereview < 2 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                                            <i class="fas fa-star{% if product.averagereview < 2 %}-o empty{% endif %}"></i>
+                                            {% if product.averagereview > 2 and product.averagereview < 3 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                                            <i class="fas fa-star{% if product.averagereview < 3 %}-o empty{% endif %}"></i>
+                                            {% if product.averagereview > 3 and product.averagereview < 4 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                                            <i class="fas fa-star{% if product.averagereview < 4 %}-o empty{% endif %}"></i>
+                                            {% if product.averagereview > 4 and product.averagereview < 5 %}<i class="fas fa-star-half-alt"></i>{% endif %}
+                                            <i class="fas fa-star{% if product.averagereview < 5 %}-o empty{% endif %}"></i>
+                                            {{ product.averagereview|floatformat:1 }} / 5
+                                        </small>
+                                    {% else %}
+                                        <small class="text-muted"><i class="far fa-star"></i> No ratings</small>
+                                    {% endif %} 
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
@@ -104,6 +122,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!--Adding horizontal width rule between rows with products
+                        for every screen size depending on the number of products on a row.
+                        Used Django template technique with help from Code Institute video lesson-->
                         {% if forloop.counter|divisibleby:1 %}
                             <div class="col-12 d-sm-none mb-5">
                                 <hr>
@@ -135,15 +156,17 @@
         </a>	
     </div>
 {% endblock %}
-
+<!--JS for sort box functionality. JS for back to top button
+    Code taken from Code Institute video lessons: Project - Boutique Ado-> Product Sorting->  Sorting Products Part 3-->
 {% block postloadjs %}
     {{ block.super }}
+    <!--Back to top button-->
     <script type="text/javascript">
 		$('.btt-link').click(function(e) {
 			window.scrollTo(0,0)
 		})
 	</script>
-    
+    <!--Sorting-->
     <script type="text/javascript">
         $('#sort-selector').change(function() {
             var selector = $(this);
