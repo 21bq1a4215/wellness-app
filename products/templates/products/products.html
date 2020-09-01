@@ -26,11 +26,31 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h2 class="logo-font">Shop</h2>
-                {% for c in current_categories %}
-                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
-                        <span class="p-2 mt-2 badge badge-white text-black border border-dark">{{ c.friendly_name }}</span>
+                    <a href="{% url 'products' %}" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">All products</span>
                     </a>
-                {% endfor %}
+                    <a href="{% url 'products' %}?category=deals" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/?category=deals' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">Deals</span>
+                    </a>
+                    <a href="{% url 'products' %}?category=yoga" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/?category=yoga' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">Yoga</span>
+                    </a>
+                    <a href="{% url 'products' %}?category=new_arrivals" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/?category=new_arrivals' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">New arrivals</span>
+                    </a>
+                    <a href="{% url 'products' %}?category=teas" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/?category=teas' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">Teas</span>
+                    </a>
+                    <a href="{% url 'products' %}?category=essential_oils" class="collection-badge text-decoration-none">
+                        <span class="{% if request.get_full_path == '/products/?category=essential_oils' %}active{% endif %}
+                        p-3 mt-3 badge border text-purple border-purple">Essential oils</span>
+                    </a>                    
+                
                 <hr class="w-50 mb-1">
             </div>
         </div>
@@ -39,6 +59,8 @@
                 <div class="row mt-1 mb-2">
                     <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                         <div class="sort-select-wrapper w-50">
+                         <!--Sorting box options, with number of results and search query displayed.
+                            Django template and JS for functionality-->
                             <select id="sort-selector" class="custom-select custom-select-sm border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                 <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                 <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>

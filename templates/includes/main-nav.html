@@ -1,16 +1,13 @@
 <div class="collapse navbar-collapse justify-content-end" id="main-nav">
     <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-            <a class="nav-link text-white" href="{% url 'products' %}" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="all-products-link" aria-labelledby="all-products-link">
+        <li class="nav-item text-white">
+            <a href="{% url 'products' %}" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="all-products-link" aria-labelledby="all-products-link">
                 Shop
             </a>
-            <div class="dropdown-menu" aria-labelledby="all-products-link">
-                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
-                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item ">By Rating</a>
-                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item ">By Category</a>
-                <a href="{% url 'products' %}?category=activewear,essentials" class="dropdown-item">Activewear &amp; Essentials</a>
-                <a href="{% url 'products' %}" class="dropdown-item">All Products</a>
-            </div>
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'products' %}">Shop</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" href="{% url 'blog' %}">Blog</a>
