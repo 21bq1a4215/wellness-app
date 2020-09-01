@@ -6,11 +6,20 @@ body, html {
     font-size: 1em;
     line-height: 1.5;
     letter-spacing: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
+}
+
+.blog-cover {
+  background-image: url("/media/people.jpg");
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
 
@@ -31,7 +40,7 @@ h1, h2, h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 
@@ -120,36 +129,36 @@ p .hero-text {
 }
 
 .shop-now-button {
-    background: #007bff;
+    background: #506CF0;
     color: white;
     min-width: 260px;
 }
 
-.btn-black {
-    background: #007bff;
+.btn-primary {
+    background: #506CF0;
     color: white;
 }
 
-.btn-outline-black {
+.btn-outline-primary {
     background: white;
-    color: #007bff!important; /* use important to override link colors for <a> elements */
-    border: 1px solid #007bff;
+    color: #506CF0!important; /* use important to override link colors for <a> elements */
+    border: 1px solid #506CF0;
 }
 
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-    background: #007bff;
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary:focus {
+    background: #506CF0;
     color: white !important;
 }
 
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #007bff;
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+    background: #506CF0;
     color: white;
 }
 
@@ -163,6 +172,10 @@ p .hero-text {
 
 .bg-black {
     background: #000 !important;
+}
+
+.bg-primary {
+    background-color: #506CF0 !important;
 }
 
 .overlay {
@@ -229,7 +242,7 @@ input[name='q']::placeholder {
 
 /* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
-    border-bottom-color: #007bff !important;
+    border-bottom-color: #506CF0 !important;
 }
 
 .arrow-secondary {
@@ -283,7 +296,7 @@ input[name='q']::placeholder {
 }
 
 .allauth-form-inner-content input {
-    border-color:;
+    border-color:#506CF0 ;
 }
 
 .allauth-form-inner-content label:not([for='id_remember']) {
@@ -306,7 +319,7 @@ input[name='q']::placeholder {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background-color: #007bff;
+    background-color: #506CF0;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -318,7 +331,7 @@ input[name='q']::placeholder {
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
 	color: #fff;
-    background-color: #007bff;
+    background-color: #506CF0;
     
 }
 
@@ -377,6 +390,49 @@ input[name='q']::placeholder {
 
     
 }
+
+
+/* BLOG
+-------------------------------------------------- */
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+.site-header {
+  background-color: rgba(0, 0, 0, .85);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.site-header a {
+  color: #999;
+  transition: ease-in-out color .15s;
+}
+.site-header a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/*
+ * Extra utilities
+ */
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden { overflow: hidden; }
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

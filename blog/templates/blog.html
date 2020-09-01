@@ -1,12 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<div class="container-fluid">
 
-<div class="container-fluid"  style="margin-top: 6rem;">
-        <div class="container blog text-center">
-        <h1>Wellness Blog/Forum</h1>
-        <p>Welcome to Wellness Blog/Forum the most popular wellness support forum worldwide.</p>
-        </div>
+        <div class="blog-cover">
+               
+                    <div class="col-md-5 p-lg-5 mx-auto my-5 text-center">
+
+                    <h1 class="display-4 font-weight-normal">Wellness Blog/Forum</h1>
+                    <p class="lead font-weight-normal">Welcome to Wellness Blog/Forum the most popular wellness support forum worldwide.</p>
+                    <a class="btn btn-outline-secondary" href="#">Start a discussion</a>
+                    </div>
+                    <div class="product-device shadow-sm d-none d-md-block"></div>
+                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                  
+            </div>
+
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5">Another headline</h2>
+      <p class="lead">And an even wittier subheading.</p>
+    </div>
+  </div>
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h2 class="display-5">Another headline</h2>
+      <p class="lead">And an even wittier subheading.</p>
+    </div>
+  </div>
+</div>
 
 {% block sidebar %}
   <ul class="nav justify-content-center">
@@ -95,3 +119,5 @@
 </div>
 </div>
  {% endblock %}
+
+
