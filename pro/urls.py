@@ -1,8 +1,10 @@
 from django.urls import path
-from . import views
+
+from .views import MembershipSelectView, PaymentView
+
+app_name = 'pro'
 
 urlpatterns = [
-    path('pro/', views.pro, name='pro'),
-    path('thanks/', views.thanks, name='thanks'),
-    path('pro-members/', views.pro_members, name='pro-members'),
+    path('', MembershipSelectView.as_view(), name='select'),
+    path('payment/', PaymentView, name='payment'),
 ]

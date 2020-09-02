@@ -46,6 +46,9 @@ class Product(models.Model):
 
 
 class Review(models.Model):
+    """
+    A review model for making reviews of each products by users
+    """
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     subject = models.CharField(max_length=60, null=False, blank=False)
