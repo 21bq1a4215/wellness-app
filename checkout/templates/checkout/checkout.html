@@ -16,7 +16,7 @@
 
 {% block content %}
     <div class="overlay"></div>
-    <div class="container">
+    <div class="container" style="padding-top:5rem;">
         <div class="row">
             <div class="col">
                 <hr>
@@ -57,25 +57,6 @@
                         </div>
                     </div>
                 {% endfor %}
-
-                <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                        <h6 class="my-0">Promo code</h6>
-                        <small>EXAMPLECODE</small>
-                        </div>
-                        <span class="text-success">-$5</span>
-                 </li>
-
-                 <form class="card p-2" action="{% url 'checkout:add-coupon' %" method="POST">
-                    {% csrf_token %}
-                    <div class="input-group">
-                     <!-- <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">-->
-                        <div class="input-group-append">
-                        {{ couponform.code }}
-                        <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
-                        </div>
-                    </div>
-                </form>
 
                 <hr class="my-0">
                 <div class="row text-black text-right">
@@ -132,13 +113,13 @@
                     </fieldset>
 
                     <div class="submit-button text-right mt-5 mb-2">                    
-						<a href="{% url 'view_bag' %}" class="btn btn-outline-black">
+						<a href="{% url 'view_bag' %}" class="btn btn-outline-primary">
 							<span class="icon">
 								<i class="fas fa-chevron-left"></i>
 							</span>
 							<span class="font-weight-bold">Adjust Bag</span>
 						</a>
-						<button id="submit-button" class="btn btn-black">
+						<button id="submit-button" class="btn btn-primary">
 							<span class="font-weight-bold">Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>

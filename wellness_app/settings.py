@@ -45,12 +45,19 @@ INSTALLED_APPS = [
     'bag',
     'checkout',
     'profiles',
-    'pro',
     'blog',
     'videos',
+    'pro',
+    'pro_payment',
 
     # Other
     'crispy_forms',
+]
+
+LOCAL_APPS = [
+    "videos.apps.VideosConfig",
+    "pro_payment.apps.Pro_paymentConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
