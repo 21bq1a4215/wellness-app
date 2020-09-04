@@ -25,13 +25,15 @@ h1, h2, h3 {
 
 /* The hero image */
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/flagged/photo-1573556278922-ad9a1914c801?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=rawan-yasser-E0Sbr9d1IV0-unsplash.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/flagged/photo-1573556278922-ad9a1914c801?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=rawan-yasser-E0Sbr9d1IV0-unsplash.jpg");
   height: 100%;
+  width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
+
 
 .hero-text {
   text-align: center;
@@ -49,27 +51,7 @@ p .hero-text {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* MARKETING CONTENT
--------------------------------------------------- */
 
-
-/* Center align the text within the three columns below the carousel */
-.marketing {
-    margin-top: 2.5rem;
-}
-
-.marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  margin-top: 3.5rem;
-  text-align: center;
-}
-.marketing h2 {
-  font-weight: 400;
-}
-.marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
-}
 
 /* VIDEO PRO-MEMBERS PAGE
 -------------------------------------------------- */
