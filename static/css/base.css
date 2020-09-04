@@ -16,6 +16,7 @@ h1, h2, h3 {
 .blog-cover {
   background-image: url("/media/people.jpg");
   height: 100%;
+  width: fit-content;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -124,7 +125,6 @@ p .hero-text {
 .btn-outline-primary {
     background: white;
     color: #506CF0!important; /* use important to override link colors for <a> elements */
-    border: 1px solid #506CF0;
 }
 
 .btn-outline-primary:hover,

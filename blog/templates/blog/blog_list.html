@@ -1,22 +1,52 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container" style="margin-top: 6rem;">
-    <h1>All blogs</h1>
+<section class="text-gray-700 body-font" style="padding-top: 2rem;">
+  <div class="container mx-auto flex px-5 items-center justify-center flex-col">
+      <img alt="content" class="object-cover object-center h-full w-full" src="/media/people.jpg">
 
-    {% if blog_list %}
-    <ul>
+    <div class="text-center lg:w-2/3 w-full" style="padding-top: 2rem;">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">All blogs</h1>
+      <p class="mb-8 leading-relaxed">Read all our blogs here</p>
+       <div class="flex mt-6 justify-center">
+        <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+      </div>
+    </div>
+   
+  </div>
+</section>  
 
+<!-- All blogs -->
+
+<section class="text-gray-700 body-font">
+  <div class="container px-5 mx-auto flex flex-wrap flex-col">
+    <div class="flex flex-col text-center w-full">
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                {% if blog_list %}
+        <ul>
       {% for blog in blog_list %}
       <li>
-        <a href="{{ blog.get_absolute_url }}">{{ blog.name }}</a> ({{blog.post_date}}) — <a href="{% url 'blogs-by-author' blog.author.pk %}">{{ blog.author }}</a>
+        <a href="{{ blog.get_absolute_url }}">{{ blog.name }}</a> 
+        <span class="text-gray-500 text-sm">{{blog.post_date}}</span> — <a href="{% url 'blogs-by-author' blog.author.pk %}">{{ blog.author }}</a>
       </li>
       {% endfor %}
-
     </ul>
-
     {% else %}
       <p>There are no blogs.</p>
-    {% endif %}    
-</div>   
+    {% endif %} 
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="text-gray-700 body-font">
+  <div class="lg:container  px-5 py-24 mx-auto">
+    <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
+      <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Create an account and get asking our experts and community. Join us today.</h1>
+      <button class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">Sign up</button>
+    </div>
+  </div>
+</section>
+
+
 {% endblock %}
