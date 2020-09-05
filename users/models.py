@@ -9,12 +9,11 @@ class User(AbstractUser):
     """
 
     #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    stripe_customer_id = CharField(max_length=50)
+    name = CharField(_("Name of User"), blank=True, max_lenght=255)
+    stripe_customer_id = CharField(max_lenght=50)
 
     def get_absolute_url(self):
         """Get url for user's detail view.
-
         Returns:
             str: URL for user detail.
 
