@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <div class="flex justify-center mx-auto" style="padding-top:5rem;">
+  <div class="flex justify-center mx-auto" style="padding-top:6rem;">
     <div class="py-3">
       <div class="border border-gray-200 rounded shadow-md px-3 py-3">
         <h2 class="text-xl text-center text-gray-500">
@@ -14,22 +14,21 @@
         </h2>
         <p class="text-3xl text-center text-gray-800">
           {% if pricing_tier.currency == "usd" %}
-          ${{ pricing_tier.price }}/mo 
+          ${{ pricing_tier.price }}/mo
           {% else %}
           €{{ pricing_tier.price }}/mo
           {% endif %}
         </p>
       </div>
       <div class="mt-3">
-       <form id="subscription-form">
-       {% csrf_token %}
-            <div id="card-element" class="form-control MyCardElement">
-            <!-- Elements will create input elements here -->
-            </div>
-
-            <!-- We'll put the error messages in this element -->
-            <div id="card-errors" role="alert"></div>
-            <button type="submit">Subscribe</button>
+        <form id="subscription-form">
+          {% csrf_token %}
+          <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+          <button id="submit" type="submit">
+              <div class="spinner hidden" id="spinner"></div>
+              <span id="button-text">Pay</span>
+          </button>
+          <p id="card-errors" role="alert"></p>
         </form>
       </div>
     </div>
@@ -41,8 +40,9 @@
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
-    <script type="text/javascript">
-        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+<script type="text/javascript">
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+console.log(csrftoken)
 
 var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
 var client_secret = $('#id_client_secret').text().slice(1, -1);
@@ -66,8 +66,7 @@ var style = {
   }
 };
 
-var priceId = "{{ pricing_tier.stripe_price_id }}"
-
+var priceId = 'price_1HMtQwHeew9pZh4QBt1rMJ42';
 var card = elements.create("card", { style: style });
 card.mount("#card-element");
 
@@ -108,7 +107,7 @@ form.addEventListener('submit', function (ev) {
   }
 });
 
-function createPaymentMethod({ card, isPaymentRetry, invoiceId }) {
+function createPaymentMethod({ customerId, card, isPaymentRetry, invoiceId }) {
   // Set up payment method for recurring usage
 
   stripe
@@ -124,6 +123,7 @@ function createPaymentMethod({ card, isPaymentRetry, invoiceId }) {
         if (isPaymentRetry) {
           // Update the payment method and retry invoice payment
           retryInvoiceWithNewPaymentMethod({
+            customerId: customerId,
             paymentMethodId: result.paymentMethod.id,
             invoiceId: invoiceId,
             priceId: priceId,
@@ -131,6 +131,7 @@ function createPaymentMethod({ card, isPaymentRetry, invoiceId }) {
         } else {
           // Create the subscription
           createSubscription({
+            customerId: customerId,
             paymentMethodId: result.paymentMethod.id,
             priceId: priceId,
           });
@@ -139,7 +140,7 @@ function createPaymentMethod({ card, isPaymentRetry, invoiceId }) {
     });
 }
 
-function createSubscription({ paymentMethodId, priceId }) {
+function createSubscription({ customerId, paymentMethodId, priceId }) {
   return (
     fetch("{% url 'pro_payment:create-subscription' %}", {
       method: 'post',
@@ -148,6 +149,7 @@ function createSubscription({ paymentMethodId, priceId }) {
         'X-CSRFToken': csrftoken
       },
       body: JSON.stringify({
+        customerId: customerId,
         paymentMethodId: paymentMethodId,
         priceId: priceId,
       }),
@@ -275,6 +277,7 @@ function onSubscriptionComplete(result) {
   // Payment was successful.
   if (result.subscription.status === 'active') {
       console.log("Complete")
+      window.location.href = "{% url 'profile' %}"
     // Change your UI to show a success message to your customer.
     // Call your backend to grant access to your service based on
     // `result.subscription.items.data[0].price.product` the customer subscribed to.
@@ -282,6 +285,7 @@ function onSubscriptionComplete(result) {
 }
 
 function retryInvoiceWithNewPaymentMethod({
+  customerId: customerId,
   paymentMethodId,
   invoiceId,
   priceId
