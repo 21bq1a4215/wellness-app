@@ -2,15 +2,12 @@
 
 {% load i18n %}
 {% load account socialaccount %}
-{% load crispy_forms_tags %}
-{% load socialaccount %}
-{% providers_media_js %}
 {% csrf_token %}
-
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block inner_content %}
 
+<hr>
 <h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
 <hr>
 
@@ -24,11 +21,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 <div class="socialaccount_ballot">
 
   <ul class="socialaccount_providers">
-    
-    <a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#3b5998;text-align:center">
-        <span class="fa fa-facebook"></span>
-                Sign in with Facebook
-    </a>
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
   </ul>
 
   <div class="login-or">{% trans 'or' %}</div>
@@ -48,11 +41,10 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <a class="btn btn-secondary" href="{% url 'home' %}">Back Home</a>
-  <button class="btn btn-primary primaryAction" type="submit">{% trans "Sign In" %}</button>
-  
+  <a class="btn btn-outline-primary" href="{% url 'home' %}">Home</a>
+  <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
   <p class="mt-2">
-    <a class="button secondaryAction text-black" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
   </p>
 </form>
 
