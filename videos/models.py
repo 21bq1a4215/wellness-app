@@ -83,14 +83,14 @@ def pre_save_video(sender, instance, *args, **kwargs):
 
 
 def post_email_confirmed(request, email_address, *args, **kwargs):
-    user = User.objects.get(email=email_address.email)
+    user = User.objects.get(email=email_address)
     free_trial_pricing = Pricing.objects.get(name='Free Trial')
     subscription = Subscription.objects.create(
         user=user, 
         pricing=free_trial_pricing
     )
     stripe_customer = stripe.Customer.create(
-        email=user.email
+        email=data['email']
     )
     stripe_subscription = stripe.Subscription.create(
         customer=stripe_customer["id"],
