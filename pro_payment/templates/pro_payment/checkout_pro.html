@@ -6,11 +6,19 @@
 {% endblock %}
 
 {% block content %}
-  <div class="flex justify-center mx-auto" style="padding-top:6rem;">
+ <div class="flex flex-col text-center w-full" style="padding-top:9rem;">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+        Please fill out the form below to complete your order <i class="fas fa-cart-arrow-down"></i>
+      </p>
+    </div>
+
+  <div class="flex justify-center mx-auto">
     <div class="py-3">
-      <div class="border border-gray-200 rounded shadow-md px-3 py-3">
+      <div class="border border-gray-300 rounded shadow-md px-3 py-3">
         <h2 class="text-xl text-center text-gray-500">
           Enroll for the {{ pricing_tier.name }} membership
+            <i class="fab fa-cc-mastercard"></i> <i class="fab fa-cc-visa"></i>        
         </h2>
         <p class="text-3xl text-center text-gray-800">
           {% if pricing_tier.currency == "usd" %}
@@ -33,6 +41,31 @@
       </div>
     </div>
   </div>
+
+  <section class="bg-gray-200 text-gray-700 body-font relative">
+  <div class="container px-5 py-20 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Get in touch with any questiions you miight have.</p>
+    </div>
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Name" type="text">
+        </div>
+        <div class="p-2 w-1/2">
+          <input class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Email" type="email">
+        </div>
+        <div class="p-2 w-full">
+          <textarea class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Message"></textarea>
+        </div>
+        <div class="p-2 w-full">
+          <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock content %}
 

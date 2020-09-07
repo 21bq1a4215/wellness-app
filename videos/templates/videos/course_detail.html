@@ -1,7 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
-    <section class="text-gray-700 body-font">
+    <section class="text-gray-700 body-font" style="padding-top:2rem;">
+    <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20">
+      <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Videos Course Details</h1>
+        <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+      </div>
+      <p class="lg:w-1/2 w-full leading-relaxed text-base">Try our free class for begginers or join us on advance yoga anytime. Get the pro memebership to stay active at home.</p>
+    </div>
+    <div class="lg:container px-5 py-18 mx-auto flex flex-wrap">
     <div class="py-16 flex flex-wrap">
         <div class="flex flex-wrap w-full">
         <div class="hidden md:block md:w-1/4 md:pr-10 md:py-6">
@@ -10,8 +18,8 @@
             {% endfor %}
         </div>
         <div class="md:w-3/4 md:mt-0">
+        <p class="text-gray-700 text-center">{{ object.description }}</p>
             <img class="w-full object-cover object-center rounded-lg" src="{{ object.thumbnail.url }}" alt="step">
-            <p class="text-gray-500">{{ object.description }}</p>
         </div>
         <div class="block md:hidden w-full mt-5 py-5">
             {% for video in course.videos.all %}
@@ -19,5 +27,16 @@
             {% endfor %}
         </div>
     </div>
+    </div>
+
+    <div class="lg:container  px-5 py-20 mx-auto">
+        <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto ">
+        <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Create an account and get asking our experts and community. Join us today.</h1>
+            <a href="{% url 'pro_payment:enroll' %}" class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
+                Pro Subscription
+            </a> 
+        </div>
+    </div>
     </section>
 {% endblock content %}
+

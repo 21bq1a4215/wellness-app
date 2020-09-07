@@ -84,6 +84,9 @@ class OrderLineItem(models.Model):
 
 
 class Coupon(models.Model):
+    """
+    A model to apply coupon discount when checking out
+    """
     code = models.CharField(max_length=15)
 
     def __str__(self):

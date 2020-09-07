@@ -210,18 +210,6 @@ input[name='q']::placeholder {
     height: 2px;
 }
 
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
-.arrow-up {
-    width: 0; 
-    height: 0; 
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent; 
-    border-bottom: 10px solid black;
-    position: absolute;
-    top: -10px;
-    right: 36px;
-}
-
 /* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
     border-bottom-color: #506CF0 !important;
@@ -261,6 +249,14 @@ input[name='q']::placeholder {
     overflow-y: auto;
 }
 
+/* Font awesome icons */
+
+.fa-users {
+    color: #667eea !important;
+}
+
+
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -294,7 +290,6 @@ input[name='q']::placeholder {
 	/* btn */
 	display: inline-block;
     font-weight: 400;
-    color: #fff;
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -312,13 +307,8 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content button:hover,
 .allauth-form-inner-content input[type='submit']:hover {	
-	color: #fff;
     background-color: #506CF0;
     
-}
-
-.allauth-form-inner-content a {
-	color: #fff; /* text-info */
 }
 
 /* Product Form */
