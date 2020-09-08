@@ -2,7 +2,7 @@ from django.views import generic
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Course, Video
-from .mixins import CoursePermissionMixin
+
 
 class CourseListView(generic.ListView):
     template_name = "videos/course_list.html"
@@ -38,3 +38,4 @@ class VideoDetailView(LoginRequiredMixin, generic.DetailView):
     def get_queryset(self):
         course = self.get_course()
         return course.videos.all()
+        

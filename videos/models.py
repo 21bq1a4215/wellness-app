@@ -86,6 +86,7 @@ def post_email_confirmed(request, email_address, *args, **kwargs):
     user = User.objects.get(email=email_address)
     subscription = Subscription.objects.create(
         user=user, 
+        email=email_address
     )
     stripe_customer = stripe.Customer.create(
         email=data['email']

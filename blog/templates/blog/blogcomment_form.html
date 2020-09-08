@@ -7,10 +7,15 @@
 <form action="" method="post">
     {% csrf_token %}
     <table>
-    {{ form.as_table }}
+    {{ form|crispy }}
     </table>
     <input class="btn btn-primary" type="submit" value="Submit" />
     
 </form>
 </div>
+<a href="{% url 'blog' %}">
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back to blog homepage</button>
+    </a>
+
 {% endblock %}
+
