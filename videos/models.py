@@ -15,10 +15,7 @@ User = get_user_model()
 
 class Pricing(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)  # Basic / Pro
-    slug = models.SlugField(null=False, blank=False, default='')
-    stripe_price_id = models.CharField(max_length=50, null=True, blank=True)
-    price = models.DecimalField(decimal_places=2, max_digits=5, null=True, blank=True)
-    currency = models.CharField(max_length=50, null=True, blank=True)
+    slug = models.SlugField(null=True)
 
     def __str__(self):
         return self.name
@@ -37,7 +34,6 @@ class Subscription(models.Model):
 
 
 class Course(models.Model):
-    pricing_tiers = models.ManyToManyField(Pricing, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to="thumbnails/")
@@ -82,28 +78,26 @@ def pre_save_video(sender, instance, *args, **kwargs):
         instance.slug = slugify(instance.title)
 
 
-def post_email_confirmed(request, email_address, *args, **kwargs):
-    user = User.objects.get(email=email_address)
-    subscription = Subscription.objects.create(
-        user=user, 
-        email=email_address
-    )
-    stripe_customer = stripe.Customer.create(
-        email=data['email']
-    )
-    stripe_subscription = stripe.Subscription.create(
-        customer=stripe_customer["id"],
-        items=[{'price': 'price_1HNKKcHeew9pZh4QFKzXpX3l'}],
-        trial_period_days=7
-    )
-    subscription.status = stripe_subscription["status"]  # trialing
-    subscription.stripe_subscription_id = stripe_subscription["id"]
-    subscription.save()
-    user.stripe_customer_id = stripe_customer["id"]
-    user.save()
+def post_save_user(sender, instance, created, *args, **kwargs):
+    if created:
+        free_trial_pricing = Pricing.objects.get(name='Free Trial')
+        subscription = Subscription.objects.create(
+            user=instance, 
+            pricing=free_trial_pricing
+        )
+        stripe_customer = stripe.Customer.create(
+            email=instance.email
+        )
+        stripe_subscription = stripe.Subscription.create(
+            customer=stripe_customer['id'],
+            items=[{'price': 'price_1HMtRnHeew9pZh4QRDKWiRKq'}]
+        )
+        print(stripe_subscription)
+        subscription.status = stripe_subscription["status"] # trialing
+        subscription.stripe_subscription_id = stripe_subscription["id"]
+        subscription.save()
 
 
-email_confirmed.connect(post_email_confirmed)
-
+post_save.connect(post_save_user, sender=User)
 pre_save.connect(pre_save_course, sender=Course)
 pre_save.connect(pre_save_video, sender=Video)
