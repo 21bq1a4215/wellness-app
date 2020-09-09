@@ -16,10 +16,17 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class EnrollView(generic.TemplateView):
+    """
+    This function loads the main page to enrroll user 
+    on subscription
+    """
     template_name = "pro_payment/enroll.html"
 
 
 class PaymentView(generic.TemplateView):
+    """
+    Payment and checkout view
+    """
     template_name = 'pro_payment/checkout_pro.html'
 
     def get_context_data(self, **kwargs):
@@ -33,6 +40,10 @@ class PaymentView(generic.TemplateView):
 
 
 class CreateSubscriptionView(APIView):
+    """
+    This function will create the subscription for the user
+    some of the logic here is taken from stripe
+    """
     def post(self, request, *args, **kwargs):
         data = request.data
         try:
@@ -97,3 +108,4 @@ class RetryInvoiceView(APIView):
             return Response({
                 "error": {'message': str(e)}
             })
+            

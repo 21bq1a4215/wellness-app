@@ -166,3 +166,4 @@ def add_review(request, product_id):
             print(review_form.errors)
             
     return redirect(reverse('product_detail', args=[product_id]))
+    

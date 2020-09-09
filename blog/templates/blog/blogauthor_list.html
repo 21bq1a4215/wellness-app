@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<!-- Blog authors -->
 <div class="container" style="margin-top: 6rem;">
     <h1 class="text-center">All bloggers</h1>
-
     {% if blogauthor_list %}
     <ul>
-
       {% for author in blogauthor_list %}
       <li class="text-center">
         <a  href="{% url 'blogs-by-author' author.pk %}">{{ author }}</a>
       </li>
       {% endfor %}
-
     </ul>
-
     {% else %}
       <p>There are no bloggers yet.</p>
     {% endif %} 

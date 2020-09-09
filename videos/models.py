@@ -14,6 +14,9 @@ User = get_user_model()
 
 
 class Pricing(models.Model):
+    """
+    Model sets the price parameters of the video course
+    """
     name = models.CharField(max_length=100, null=True, blank=True)  # Basic / Pro
     slug = models.SlugField(null=True)
 
@@ -22,6 +25,10 @@ class Pricing(models.Model):
 
 
 class Subscription(models.Model):
+    """
+    Model for subcriptions to manage each
+    user subcription and permisions
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pricing = models.ForeignKey(Pricing, on_delete=models.CASCADE, related_name='subscriptions')
     created = models.DateTimeField(auto_now_add=True)
@@ -34,6 +41,9 @@ class Subscription(models.Model):
 
 
 class Course(models.Model):
+    """
+    Model to manage and add the courses
+    """
     name = models.CharField(max_length=100, null=True, blank=True)
     slug = models.SlugField(unique=True)
     thumbnail = models.ImageField(upload_to="thumbnails/")
@@ -48,6 +58,11 @@ class Course(models.Model):
 
 
 class Video(models.Model):
+    """
+    Model for manageing and adding videos
+    using vimeo, can add videos using vimeo id
+    on the vimeo dashboard will generate the vimeo id needed
+    """
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='videos')
     vimeo_id = models.CharField(max_length=50)
     title = models.CharField(max_length=150)

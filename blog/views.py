@@ -4,13 +4,13 @@ from django.urls import reverse
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
-
-
+from django.shortcuts import get_object_or_404
 from django.views import generic
 from .models import Blog, BlogAuthor, BlogComment
 from django.contrib.auth.models import User #Blog author or commenter
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
+
 
 
 def blog(request):
@@ -31,8 +31,7 @@ class BlogListView(generic.ListView):
     model = Blog
     paginate_by = 5
 
-    
-from django.shortcuts import get_object_or_404
+
 
 
 class BlogListbyAuthorView(generic.ListView):
@@ -75,12 +74,10 @@ class BloggerListView(generic.ListView):
     Generic class-based view for a list of bloggers.
     """
     model = BlogAuthor
-    paginate_by = 5
+    paginate_by = 10
 
 
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import CreateView
-from django.urls import reverse
+
 
 
 class BlogCommentCreate(LoginRequiredMixin, CreateView):
@@ -116,3 +113,4 @@ class BlogCommentCreate(LoginRequiredMixin, CreateView):
         After posting comment return to associated blog.
         """
         return reverse('blog-detail', kwargs={'pk': self.kwargs['pk'],})
+        

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- Course detail page -->
     <section class="text-gray-700 body-font" style="padding-top:2rem;">
     <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap w-full mb-20">
@@ -9,6 +10,9 @@
       </div>
       <p class="lg:w-1/2 w-full leading-relaxed text-base">Try our free class for begginers or join us on advance yoga anytime. Get the pro memebership to stay active at home.</p>
     </div>
+         <a href="{% url 'videos:course-list' %}">
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back to Videos Homepage</button>
+    </a>
     <div class="lg:container px-5 py-18 mx-auto flex flex-wrap">
     <div class="py-16 flex flex-wrap">
         <div class="flex flex-wrap w-full">
@@ -29,14 +33,14 @@
     </div>
     </div>
 
-    <div class="lg:container  px-5 py-20 mx-auto">
+    </section>
+     <div class="lg:container  px-5 py-20 mx-auto">
         <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto ">
-        <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Create an account and get asking our experts and community. Join us today.</h1>
+        <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Join our online community and Pro today.</h1>
             <a href="{% url 'pro_payment:enroll' %}" class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-10 sm:mt-0">
                 Pro Subscription
             </a> 
         </div>
     </div>
-    </section>
 {% endblock content %}
 

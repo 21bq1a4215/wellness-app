@@ -5,25 +5,34 @@ from .models import Course, Video
 
 
 class CourseListView(generic.ListView):
+    """
+    Loads the course list from the db
+    """
     template_name = "videos/course_list.html"
     queryset = Course.objects.all()
 
 
 class CourseDetailView(generic.DetailView):
+    """
+    Loads each course detail info
+    """
     template_name = "videos/course_detail.html"
     queryset = Course.objects.all()
 
 
 class VideoDetailView(LoginRequiredMixin, generic.DetailView):
+    """
+    This function will display the video course
+    for users subscribed
+    """
     template_name = "videos/video_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super(VideoDetailView, self).get_context_data(**kwargs)
         course = self.get_course()
-        subscription = self.request.user.subscription
-        subscription_is_active = subscription.status == "active" or subscription.status == "trialing" 
+        subscription = self.request.user
         context.update({
-            "has_permission": subscription_is_active
+            "has_permission": subscription
         })
         return context
 
@@ -37,4 +46,3 @@ class VideoDetailView(LoginRequiredMixin, generic.DetailView):
     def get_queryset(self):
         course = self.get_course()
         return course.videos.all()
-        

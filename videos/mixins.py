@@ -4,6 +4,10 @@ from .models import Course
 
 
 class CoursePermissionMixin:
+    """
+    This function will attemp to give permision
+    to content to only user subscribe 
+    """
     def dispatch(self, request, *args, **kwargs):
         course = get_object_or_404(Course, slug=self.kwargs["slug"])
         subscription = request.user.subscription

@@ -3,25 +3,17 @@
 {% block content %}
 <div class="container" style="margin-top: 6rem;">
     <h1>Blogger: {{blogger}}</h1>
-    
     <h3>Bio</h3>
-    
     <p>{{blogger.bio}}</p>
-    
-    
-
     {% if blog_list %}
     <h3>Blogs list</h3>
     <ul>
-
       {% for blog in blog_list %}
       <li>
         <a href="{{ blog.get_absolute_url }}">{{ blog.name }}</a> ({{blog.post_date}})</a>
       </li>
       {% endfor %}
-
     </ul>
-
     {% else %}
       <p>This blogger hasn't posted anything yet.</p>
     {% endif %}   

@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section class="text-gray-700 body-font">
-    <div class="py-16 flex flex-wrap">
+<!-- Video detail page displaying the vimeo video player -->
+    <section class="text-gray-700 body-font" style="padding-top:4rem;">
+    <h1 class="text-center" style="padding-top:2rem;">Watch Videos Here</h1>
+    <div class="container py-16 flex flex-wrap">
         <div class="flex flex-wrap w-full">
         <div class="hidden md:block md:w-1/4 md:pr-10 md:py-6">
             {% for video in video.course.videos.all %}
@@ -22,5 +24,9 @@
             {% endfor %}
         </div>
     </div>
+    </div>
+      <a href="{% url 'videos:course-list' %}">
+    <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Back to Videos Homepage</button>
+    </a>
     </section>
 {% endblock content %}
