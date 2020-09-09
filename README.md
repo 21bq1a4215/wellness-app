@@ -324,7 +324,7 @@ The languages, frameworks, libraries and other tools utilised for building this 
 
 ## Testing
 
-The testing information can be found in this separate file [Testing](https://github.com/GiselleNessi/django-wellness-app/blob/73b9ad945ad1e2041f9e4d8286eba33bed6a109a/README.md)
+The testing information can be found in this separate file [Testing](https://github.com/GiselleNessi/django-wellness-app/blob/124c0309c69d3b89e851fcee947a837311c4b35d/TESTING.md)
 
 ## Deployment 
 
