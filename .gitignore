@@ -1,6 +1,8 @@
 *.sqlite3
 *.pyc
 __pycache__
+core.python3.79634.1599227047
+core.python3.85505.1599227088
 
 # Environments
 .env

@@ -1,10 +1,5 @@
 ## Testing
 
-Resources
-Main README file
-Live website
-
-
 ### Django Testing
 
 I attempted to do some local testing on the files test.py for some of the views, models, 
@@ -174,12 +169,12 @@ If the payment does not go through, the user will receive a message that the car
 
 #### Known Issues
 
-1. Image Uploads: I had an issue with uploading new images after the project has been deployed. 
+1. **Image Uploads:** I had an issue with uploading new images after the project has been deployed. 
         - Temporary solution: I used a suggested solution found online where I use the root url from 
         AWS S3 of the image. This correctly displays the image on the deployed app on heroku.
         - Ideally, later I would like to properly configure AWS on settings.py to be able to collectstatic 
         and update with new media added.
-2. Stripe Subscription Model: I had several issues implementing this, I successfully wrote the models, views 
+2. **Stripe Subscription Model:** I had several issues implementing this, I successfully wrote the models, views 
 and admin to manage a video course area, where permission can be given to users to have access or not to courses. 
 Due to a lack of time, I was having a problem with authentication - when the user made the payment for the course 
 it was not authenticating the user properly and showed an error - “user has no subscription”. I followed the Stripe 
@@ -190,28 +185,24 @@ documentation to try and fix this but ran out of time.
         monthly subscription in order to access video courses on the site. I would also like to add an option to 
         update or cancel a subscription. For now, I encourage the users on the site to contact an admin to cancel 
         their subscription if necessary.
-3. New User Error: An error is appearing sometimes relative to authentication and cached cookies I believe - when 
+3. **New User Error:** An error is appearing sometimes relative to authentication and cached cookies I believe - when 
 registering a new user and then trying to login on the same tab, an error will appear, saying that the user has no 
 subscription; this is related to the Stripe api conflicting. I attempted to fix this by removing the required 
 permissions needed to access some part of the Pro Courses section, which seemed to fix the issue. If this issue 
 appears, it can be worked around by either refreshing the page to try again, or by using an incognito tab to log in. 
-4. 404 Error Page: This page is required for instances when a user visits an unavailable page. Due to lack of time, 
+4. **404 Error Page:** This page is required for instances when a user visits an unavailable page. Due to lack of time, 
 I added this page but wasn't able to test and implement properly.
 
 #### Web testing
 
-- The devices the application was tested on were:
+The devices the application was tested on were:
 
-Mobile
-Galaxy S5, Pixel 2, Pixel 2 XL, iPhone 4, iPhone 5 SE, iPhone 6, 7 and 8, 
+- Mobile: Galaxy S5, Pixel 2, Pixel 2 XL, iPhone 4, iPhone 5 SE, iPhone 6, 7 and 8, 
 iPhone 6, 7 and 8 Plus (real device), iPhone X
 
-Tablet
-iPad (my iPad)
-iPad Pro
+- Tablet: iPad, iPad Pro
 
-Laptop
-Macbook (my laptop)
+- Laptop: Macbook Pro
 
 For the web testing I used Chrome dev tools and Safari web tools to find bugs, errors and test 
 new styles for HTML, CSS and JavaScript.

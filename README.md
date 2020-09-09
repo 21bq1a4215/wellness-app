@@ -21,34 +21,36 @@ The app uses Stripe API to process payments for products and subscriptions.
 - [**About**](#About)
 - [**UX**](#UX)
   - [User Stories](#User-Stories)
-  - [Design Development](#Design-Development)
+  - [Design Choices](#Design-Choices)
   - [Wireframes](#Wireframes)
-- [**Database Structure**](#Database-Structure)
+- [**Information Architecture**](#Information-Architecture)
+  - [Database Structure](#Database-Structure)
 - [**Features**](#Features)
   - [Existing Features](#Existing-Features)
   - [Features Left To Implement](#Features-Left-To-Implement)
-- [**Technologies Used**](#Technologies-Used)
-  - [Version Control](#Version-Control)
-  - [Hosting](#Hosting)
+- [**Technologies**](#Technologies)
+  - [Tools](#Tools)
+  - [Frontend Technologies](#Frontend-Technologies)
+  - [Backend Technologies](#Backend-Technologies)
+  - [Languages](#Languages)
 - [**Testing**](#Testing)
-  - [Tests Performed](#Tests-Performed)
-  - [Known issue list](#Known-Issue-List)
-  - [Code Validation](#Code-Validation)
 - [**Deployment**](#Deployment)
-  - [Live App Link](#Live-App-Link)
-  - [Repository Link](#Repository-Link)
-  - [Running Code Locally](#Running-Code-Locally)
+  - [Getting Started](#Getting-Started)
+  - [Github Deployment](#Github-Deployment)
+  - [Heroku Deployment](#Heroku-Deployment)
 - [**Credits**](#Credits)
+  - [Code](#Code)
   - [Content](#Content)
+  - [Media](#Media)
   - [Acknowledgements](#Acknowledgements)
-  - [Disclaimer](#Disclaimer)
+- [**Disclaimer**](#Disclaimer)
 
 
 ## UX
 
 ### User Stories
 
-“As an online shopper____”
+**“As an online shopper____”**
 
 - “...I want to easily purchase wellness products online, without needing to 
     create an account.”
@@ -57,7 +59,7 @@ The app uses Stripe API to process payments for products and subscriptions.
 - “...I want to read reviews of products I’m interested in, and leave reviews for 
     products I’ve purchased myself”
 
-“As someone interested in wellness…”
+**“As someone interested in wellness…”**
 
 - “...I want to access high quality yoga training online so that I can practice 
     in the comfort of my own home.”
@@ -66,7 +68,8 @@ The app uses Stripe API to process payments for products and subscriptions.
 - “...I want to access basic online training materials before committing to a paid
      subscription.”
 
-    “As a site user…”
+**“As a site user…”**
+
 - “...I want to easily and securely register for an account, and be able to l
     og in and out.”
 - “...I want to be able to recover my password if I forget it.”
@@ -83,17 +86,18 @@ being responsive to provide the best possible user experience.
 #### Primary Colour Palette
 The colour palette was chosen to create a minimalist and calming experience. 
 A simple and indigo and white colour palette was selected, to complement the tones of 
-the yoga images and illustrations. Hex colours used #667eea, #fff and #F0F0F0
+the yoga images and illustrations. 
+Hex colours used #667eea, #fff and #F0F0F0.
 
 
-**Fonts**
+#### Fonts
 
-This two fonts used for all titles, subtitles and text on the app.
+These two fonts used for all titles, subtitles and text on the app.
 
 Font-family: 'Montserrat', sans-serif and 'Inter', sans-serif.
 
 
-**Responsivity**
+#### Responsivity
 
 This website is fully responsive on all screen sizes and devices, making the app easy to navigate.  
 
@@ -106,19 +110,19 @@ The links to these images are available at the following links:
 
 
 
-- [**_Wireframe 1_**](static/images/wireframe1.png)
+- [**_Wireframe 1_**](media/wireframe1.png)
 
-- [**_Wireframe 2_**](static/images/wireframe2.png)
+- [**_Wireframe 2_**](media/wireframe2.png)
 
-- [**_Wireframe 3_**](static/images/wireframe3.png)
+- [**_Wireframe 3_**](media/wireframe3.png)
 
-- [**_Wireframe 4_**](static/images/wireframe4.png)
+- [**_Wireframe 4_**](media/wireframe4.png)
 
-- [**_Wireframe 5_**](static/images/wireframe5.png)
+- [**_Wireframe 5_**](media/wireframe5.png)
 
-- [**_Wireframe 6_**](static/images/wireframe6.png)
+- [**_Wireframe 6_**](media/wireframe6.png)
 
-- [**_Wireframe 7_**](static/images/mobileviews.png)
+- [**_Wireframe 7_**](media/mobileviews.png)
 
 
 
@@ -132,22 +136,19 @@ is the controller of the overall application.
 
 #### Database Structure
 
-Users: email / name / address / permissions
-Blog: blogpost / title / description / author / comments
-Checkout: orders / date / email / price
-Orders: user / email / products / personal info
- 
-Products: product list / name / description / price / categories /sku / image
-Categories: name / data_name
+- Users: email / name / address / permissions
+- Blog: blogpost / title / description / author / comments
+- Checkout: orders / date / email / price
+- Orders: user / email / products / personal info
+- Products: product list / name / description / price / categories /sku / image
+- Categories: name / data_name
 
-- Stripe Subscription Model
+**Stripe Subscription Model**
 
-Courses: video / pricing / vimeo_id / thumbnail
-Pricing: price per month / id / name / currency (basic/pro)
-Subscription: User / stripe_subscription_id / status (active / canceled / 
-past_due / trialing / Pricing 
- 
-Videos: vimeo_id / title / slug / description / order
+- Courses: video / pricing / vimeo_id / thumbnail
+- Pricing: price per month / id / name / currency (basic/pro)
+- Subscription: User / stripe_subscription_id / status (active / canceled / past_due / trialing / Pricing 
+- Videos: vimeo_id / title / slug / description / order
 
 
 ## Features
@@ -217,9 +218,8 @@ section, as well as manage subscriptions of registered users
 **Footer**
 
 - The footer contains contact information and social icon links, which redirect 
-to appropriate social pages.
+to appropriate social pages
 
-**Accounts**
 **Register Account**
 
 - Users can register securely with a username, email and secure password 
@@ -241,13 +241,13 @@ link to verify their account
 
 **Reset Password**
 
-- Step 1: On the login page, you can find the “forgot password” link, which will lead to a 
+- On the login page, you can find the “forgot password” link, which will lead to a 
 form where the user enters their email address
-- Step 2: Enter the email from the account you need to reset the password for
-- Step 3: The user will receive an email with a link that will allow them to add a different 
+- User can enter the email from the account you need to reset the password for
+- The user will receive an email with a link that will allow them to add a different 
 password by sending you to a reset password form
-- Step 4: The user adds a new password and confirms it
-- Step 5: Once the password is confirmed, the user can log in using the new password
+- The user adds a new password and confirms it
+- Once the password is confirmed, the user can log in using the new password
 
 **Product Management**
 
@@ -271,19 +271,19 @@ password by sending you to a reset password form
 
 ### Features Left to Implement
 
-- Cancel Subscription
+- **Cancel Subscription**
         - Add an option for users to cancel their subscription through 
         their profile (I didn’t have enough time to implement this feature)
-- Profile Personalisation
+- **Profile Personalisation**
         - Further develop the functionality on user profiles so users 
-        can have a public bio and avatar, view their membership plan and edit their profiles.
-- Social Account
+        can have a public bio and avatar, view their membership plan and edit their profiles
+- **Social Account**
         - Enable single sign-in using Facebook, so users can register, 
         login and transfer their personal information from Facebook (I tried to implement this 
         feature and while it initially appeared to have worked, after deployment I was blocked 
         due to a lack of permissions, so I removed this feature from the code to avoid further issues)
-- Free Trial Subscription
-        Offer the option of a free trial subscription to users when they register 
+- **Free Trial Subscription**
+        - Offer the option of a free trial subscription to users when they register 
 
 
 ## Technologies 
@@ -320,12 +320,15 @@ The languages, frameworks, libraries and other tools utilised for building this 
 
 ## Languages
 
-  - This project uses HTML, CSS, Javascript and Python programming languages.
+  - This project uses HTML, CSS, Javascript and Python programming languages
 
+## Testing
+
+The testing information can be found in this separate file [Testing](https://github.com/GiselleNessi/django-wellness-app/blob/73b9ad945ad1e2041f9e4d8286eba33bed6a109a/README.md)
 
 ## Deployment 
 
-#### Getting Started
+### Getting Started
 
 The web app is created in the Gitpod environment and regularly committed to 
 GitHub after each crucial piece of coding. 
@@ -347,7 +350,7 @@ the URL https://github.com/GiselleNessi/django-wellness-app.
 environment variables; I used environment variables in gitpod settings for this project.
 
 
-#### Heroku Deployment
+### Heroku Deployment
 
 1. Created a Heroku account @ https://signup.heroku.com/
 2. Created requirements.txt file in Gitpod workspace for Heroku to understand 
@@ -396,14 +399,14 @@ with this tutorial I was able to get a better idea of how to build a membership 
 ### Content
 
 - Product text and photos were taken from Holland and Barrett **https://www.hollandandbarrett.com/**
-- I used lorem ipsum for the blog entries for this project.
-- The rest of the text was created by me.
+- I used lorem ipsum for the blog entries for this project
+- The rest of the text was created by me
 
 ### Media
 
 - All the images and illustrations for this app were taken from 
-Unsplash (https://unsplash.com/) and Freepik (https://www.freepik.com/home).
-- The Vimeo video is owned by me.
+Unsplash (https://unsplash.com/) and Freepik (https://www.freepik.com/home)
+- The Vimeo video is owned by me
 
 ### Acknowledgements
 
